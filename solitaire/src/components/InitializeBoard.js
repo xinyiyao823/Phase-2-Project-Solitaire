@@ -2,7 +2,7 @@ import React from 'react'
 
 import CreateCard from './CreateCard'
 
-function CreateDeck() {
+function InitializeBoard() {
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -31,12 +31,10 @@ function CreateDeck() {
         for (let i=0; i<=9; i++) {
             i !== 1? deck.push({
             value: `${i}${suit}`,
-            visible: true
         }) : console.log('hi')
         }
         faces.forEach( face => deck.push({
             value: `${face}${suit}`,
-            visible: true
         }))
     } )
 
@@ -49,15 +47,19 @@ function CreateDeck() {
         card.position = initialPositions.pop() 
         : card.position = [1,1]) )
 
+    deck.map( card => card.position[1] > card.position[0]? card.visible = true : card.visible = false)
+
     console.log(deck)
 
+    return deck
 
-    return (
-        <div class="deck">
-            {/* {deck.map( card => <CreateCard card={card} /> )} */}
-            {deck}
-        </div>
-    )
+
+    // return (
+    //     <div class="deck">
+    //         {deck.map( card => <CreateCard card={card} /> )}
+    //         {deck}
+    //     </div>
+    // )
 }
 
-export default CreateDeck
+export default InitializeBoard

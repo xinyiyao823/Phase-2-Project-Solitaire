@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CreateDeck from './CreateDeck'
+import InitializeBoard from './InitializeBoard'
 import RenderBoard from './RenderBoard' 
 import RenderLeaderboard from './RenderLeaderboard'
 // import Rules from './Rules'
@@ -8,14 +8,15 @@ import RenderLeaderboard from './RenderLeaderboard'
 
 function Game() {
 
-    const deck = CreateDeck()
-    console.log(deck)
+    const board = InitializeBoard()
+    console.log("BOARD: ", board)
 
 
     return (
         <div>
-            <RenderBoard />
-            <RenderLeaderboard />
+            TEST
+            <RenderBoard board={board} />
+            {/* <RenderLeaderboard /> */}
             
         </div>
     )
