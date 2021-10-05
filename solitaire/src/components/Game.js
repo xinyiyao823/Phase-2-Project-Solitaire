@@ -15,11 +15,10 @@ function Game() {
 
     console.log("BOARD: ", board)
 
-
     return (
         <div>
             TEST
-            <RenderBoard board={board} />
+            <RenderBoard board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
             {/* <RenderLeaderboard /> */}
             
         </div>
