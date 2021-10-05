@@ -1,8 +1,6 @@
 import React from 'react'
 
-import CreateCard from './CreateCard'
-
-function InitializeBoard() {
+function initializeBoard() {
 
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -53,13 +51,6 @@ function InitializeBoard() {
 
     return deck
 
-
-    // return (
-    //     <div class="deck">
-    //         {deck.map( card => <CreateCard card={card} /> )}
-    //         {deck}
-    //     </div>
-    // )
 }
 
-export default InitializeBoard
+export default initializeBoard

@@ -1,14 +1,18 @@
 import React from 'react'
+import { useState } from 'react'
 
-import InitializeBoard from './InitializeBoard'
-import RenderBoard from './RenderBoard' 
-import RenderLeaderboard from './RenderLeaderboard'
+import initializeBoard from '../hooks/initializeBoard'
+
+import RenderBoard from './RenderBoard'
+// import RenderLeaderboard from './RenderLeaderboard'
 // import Rules from './Rules'
 
 
 function Game() {
 
-    const board = InitializeBoard()
+    const [ board, setBoard ] = useState(initializeBoard())
+    const [ selectedCard, setSelectedCard ] = useState({})
+
     console.log("BOARD: ", board)
 
 
