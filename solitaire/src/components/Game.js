@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-
+import Timer from './Timer'
 import initializeBoard from '../hooks/initializeBoard'
 import UserForm from './UserForm'
 import RenderBoard from './RenderBoard'
@@ -34,6 +34,7 @@ function Game() {
             <RenderBoard board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>
+            <Timer />
         </div>
     )
 }

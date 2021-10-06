@@ -21,7 +21,7 @@
 .userForm {
   position: fixed;
   right: 50px;
-  top: 750px;
+  top: 850px;
   background-color: honeydew;
   padding: 5px;
   border-collapse: separate;
@@ -65,6 +65,52 @@ th {
   text-align: center;
   color: aliceblue;
   font-size: xxx-large;
+}
+
+.container {
+  width: 100px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  margin-top: 5rem;
+  background-color: rgb(62, 103, 236);
+  position: fixed;
+  top: 675px;
+  right: 700px;
+  padding: 1rem 5rem;
+  border-radius: 10px;
+}
+
+.time {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.buttons button {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 300ms ease-in-out;
+  transform: translateY(0);
 
 }
+
+.buttons button:hover {
+  transform: translateY(-2px);
+}
+
+.start {
+  background-color: rgb(25, 201, 148);
+  display: inline-block;
+}
+
+.reset {
+  background-color: salmon;
+}
+
 
