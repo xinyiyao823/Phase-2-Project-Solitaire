@@ -1,5 +1,5 @@
 import React from 'react'
-// import styled from "styled-components"
+//import { BrowserRouter, Route } from "react-router-dom";
 
 function RenderLeaderboard({users}) {
     users.sort((a,b) => (a.score < b.score) ? 1 : -1)
@@ -11,7 +11,7 @@ function RenderLeaderboard({users}) {
         }
         return ranks}
 
-    const ranks = ranksArray(10)
+    const ranks = ranksArray(15)
 
     return (
         <div className="leaderboard">

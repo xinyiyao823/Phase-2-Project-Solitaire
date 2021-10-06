@@ -30,7 +30,7 @@ function Game() {
 
     return (
         <div>
-            TEST
+            <h1 className="title">SOLITAIRE</h1>
             <RenderBoard board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>

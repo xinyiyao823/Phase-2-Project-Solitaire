@@ -1,31 +1,32 @@
 import React, { useState } from 'react'
 
 function UserForm({addNewUser}) {
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({
+        username: '',
+        score: ''
+    })
 
     function handleOnChange(e) {
         setUserData({
-            username: e.target.value
+            ...userData,
+            [e.target.name]: e.target.value
         })
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("<<<SUBMITTING>>>")
-        console.log("USER DATA: ", userData)
-
         //POST Request
         fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(userData)
         })
         .then(r => r.json())
         .then(newUserName => addNewUser(newUserName))
         
-        // setUserData('')
+         setUserData('')
 
     }
 
@@ -35,8 +36,15 @@ function UserForm({addNewUser}) {
         onSubmit={handleSubmit}>
             Please create a username:
             <input
-            name="name"
+            name="username"
             onChange={handleOnChange}
+            value={userData.username}
+            /><br/>
+            Enter your score:
+            <input
+            name="score"
+            onChange={handleOnChange}
+            value={userData.score}
             />
             <input 
             type="submit" 
