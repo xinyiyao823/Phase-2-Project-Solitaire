@@ -68,16 +68,16 @@ th {
 }
 
 .container {
-  width: 100px;
+  width: 150px;
   margin: 0 auto;
   display: grid;
   place-items: center;
   margin-top: 5rem;
   background-color: rgb(62, 103, 236);
   position: fixed;
-  top: 675px;
+  top: 740px;
   right: 700px;
-  padding: 1rem 5rem;
+  padding: 0.75rem 3rem;
   border-radius: 10px;
 }
 
