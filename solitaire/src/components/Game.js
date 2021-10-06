@@ -16,7 +16,7 @@ function Game() {
     const [users, setUsers] = useState([])
     //GET Request
     useEffect(() => {
-        fetch('http://localhost:4000/users')
+        fetch('http://localhost:3001/users')
         .then(r => r.json())
         .then(userData => setUsers(userData))
     }, [])

@@ -15,7 +15,7 @@ function UserForm({addNewUser}) {
         console.log("USER DATA: ", userData)
 
         //POST Request
-        fetch('http://localhost:4000/users', {
+        fetch('http://localhost:3001/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
