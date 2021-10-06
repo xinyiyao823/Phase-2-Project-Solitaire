@@ -1,10 +1,17 @@
 import React from 'react'
-import styled from "styled-components"
+// import styled from "styled-components"
 
 function RenderLeaderboard({users}) {
     users.sort((a,b) => (a.score < b.score) ? 1 : -1)
-    
 
+    const ranksArray = (num) => {
+        const ranks = []
+        for (let i=1; i<=num; i++) {
+            ranks.push(i)
+        }
+        return ranks}
+
+    const ranks = ranksArray(10)
 
     return (
         <div className="leaderboard">
@@ -21,7 +28,7 @@ function RenderLeaderboard({users}) {
                     {
                         users.map((user) => (
                             <tr key={user}>
-                                <td className="header">{user.rank}</td>
+                                <td className="header">{ranks.shift()}</td>
                                 <td className="header">{user.username}</td>
                                 <td className="header">{user.score} points</td>
                                 <td/>

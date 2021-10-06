@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 
 function UserForm({addNewUser}) {
-    const [userData, setUserData] = useState('')
+    const [userData, setUserData] = useState({})
 
     function handleOnChange(e) {
-        setUserData(e.target.value)
+        setUserData({
+            username: e.target.value
+        })
     }
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log("<<<SUBMITTING>>>")
+        console.log("USER DATA: ", userData)
+
         //POST Request
-        fetch('http://localhost:3001/users', {
+        fetch('http://localhost:4000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +24,8 @@ function UserForm({addNewUser}) {
         })
         .then(r => r.json())
         .then(newUserName => addNewUser(newUserName))
-        setUserData('')
+        
+        // setUserData('')
 
     }
 
@@ -29,7 +35,6 @@ function UserForm({addNewUser}) {
         onSubmit={handleSubmit}>
             Please create a username:
             <input
-            value={userData}
             name="name"
             onChange={handleOnChange}
             />
