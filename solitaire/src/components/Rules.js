@@ -3,6 +3,7 @@ import React from 'react'
 function Rules() {
     return (
         <div className="rulesBox">
+        <button className="hideRules">✖</button>
             <h3>Objective:</h3>
             <ul>
                 <li>The goal of the game is to move all cards to the empty stacks at the top of the board.</li>

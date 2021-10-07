@@ -175,7 +175,12 @@ th {
   font-family: 'Paytone One', sans-serif;
 }
 
-.show .close {
-  width: 200px;
+.show {
+  float: top;
   
+}
+
+.hideRules {
+  float: right;
+  margin-top: 5px;
 }

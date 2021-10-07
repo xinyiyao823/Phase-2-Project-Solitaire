@@ -46,13 +46,10 @@ function Game() {
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>
             <Timer />
-            {rulesPopUp ?
             <button 
-            className="close"
-            onClick={() => setRulesPopUp(!rulesPopUp)}>Close</button> : <button 
             className="show"
-            onClick={() => setRulesPopUp(!rulesPopUp)}>Rules</button>}
-            {rulesPopUp ? <Rules /> : null}
+            onClick={() => setRulesPopUp(!rulesPopUp)}>Rules</button>
+            {rulesPopUp ? <Rules  /> : null}
         </div>
     )
 }
