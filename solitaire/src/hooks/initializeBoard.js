@@ -9,47 +9,91 @@ function initializeBoard() {
           array[i] = array[j];
           array[j] = temp;
         }
+        return array
       }
+
+    const determineColor = (suit) => (suit === '♥' || suit === '♦')? "red":"black"
     
-    const suits = ["H", "S", "D", "C"]
-    const faces = ["A", "J", "Q", "K"]
-    const deck = []
-    const initialPositions = [  [1,2],
-                                [2,2], [2,3],
-                                [3,2], [3,3], [3,4],
-                                [4,2], [4,3], [4,4], [4,5],
-                                [5,2], [5,3], [5,4], [5,5], [5,6],
-                                [6,2], [6,3], [6,4], [6,5], [6,6], [6,7],
-                                [7,2], [7,3], [7,4], [7,5], [7,6], [7,7], [7,8]
-    ]
-
-
-    // Create card object with value and visibility boolean
-    suits.forEach( suit => {
-        for (let i=0; i<=9; i++) {
-            i !== 1? deck.push({
-            value: `${i}${suit}`,
-        }) : console.log('hi')
+    const spawnDeck = () => {
+        const suits = ["♥", "♠", "♦", "♣"]
+        const faces = ["A", "J", "Q", "K"]
+        const faceValues = { 
+            0: 10,
+            "A": 1,
+            2: 2,
+            3: 3,
+            4: 4,
+            5: 5,
+            6: 6,
+            7: 7,
+            8: 8,
+            9: 9,
+            "J": 11,
+            "Q": 12,
+            "K": 13
         }
-        faces.forEach( face => deck.push({
-            value: `${face}${suit}`,
-        }))
-    } )
+        const deck = []
 
-    // randomize order of cards in deck array
-    shuffleArray(deck)
+        // Create card object with value and visibility boolean
+        suits.forEach( suit => {
+            for (let i=0; i<=9; i++) {
+                i !== 1? deck.push({
+                value: `${i}${suit}`,
+                suit: suit,
+                face: i,
+                faceVal: faceValues[i],
+                show: false,
+                color: determineColor(suit) 
+            }) : console.log('...')
+            }
+            faces.forEach( face => deck.push({
+                value: `${face}${suit}`,
+                suit: suit,
+                face: face,
+                faceVal: faceValues[face],
+                show: false,
+                color: determineColor(suit) 
+            }))
+        } )
 
-    // randomly assign starting positions to cards
-    // if no more positions are available, cards go to the deck at [1,1]
-    deck.map( (card) => (initialPositions.length >= 1? 
-        card.position = initialPositions.pop() 
-        : card.position = [1,1]) )
+        return deck
+    }
 
-    deck.map( card => card.position[1] > card.position[0]? card.visible = true : card.visible = false)
+    const populateBoard = (deck) => {
+        const board = {
+            columns: [
+                [],[],[],[],[],[],[]
+            ],
+            aces: [
+                [], [], [], []
+            ],
+            deck: [ [] ],
+            draw: [ [] ],
+        }
+        // console.log("DECK@populateBoard: ", deck)
 
-    console.log(deck)
+        for (let i=0; i<=6; i++) {
+            for (let n=0; n<=i; n++) {
+                const card = deck.pop()
+                board.columns[i].push(card)
+            }
+            board.columns[i][i].show = true
+        }
 
-    return deck
+        board.deck[0] = [ ...deck ]
+        // console.log("BOARD@_endof_populateBoard: ", board)
+
+        return board
+    }
+
+    const deck = spawnDeck()
+    // console.log("DECK@initializeBoard: ", deck)
+    const shuffledDeck = shuffleArray(deck)
+    const board = populateBoard(shuffledDeck)
+
+    // console.log("BOARD@_endof_initializeBoard", board)
+
+    return board
 
 }
 

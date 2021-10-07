@@ -36,6 +36,39 @@ body {
   background-color: rgb(2, 87, 2);
 }
 
+td {
+  height: 24px;
+  width: 84px;
+}
+
+#board {
+  margin-left: 100px;
+}
+
+.grid-row .card {
+  height: 70px;
+  width: 44px;
+  background-color: white;
+  border: midnightblue 1px solid;
+  text-align: center;
+  position:fixed
+}
+
+.card.red {
+  color: red;
+}
+
+.card.black {
+  color: black;
+}
+
+.card.hidden {
+  background-color: midnightblue;
+  border: white 1px solid;
+}
+
+.card.selected {background-color: skyblue;}
+
 .table1 {
   width: 20%;
   text-align: center;
