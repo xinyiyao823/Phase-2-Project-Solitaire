@@ -93,18 +93,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
 
     return (
         <table id="board">
-            {/* <tr className="top-row">
-                {/* <Cell row={1} col={1} className={"cell pile deck"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={2} className={"cell pile drawn"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={3} className={"cell empty"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={4} className={"cell pile ace"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={5} className={"cell pile ace"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={6} className={"cell pile ace"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-                <Cell row={1} col={7} className={"cell pile ace"} board={board} selectedCard={selectedCard} setSelectedCard={setSelectedCard}/>
-
-            
-            </tr> */}
-
             <tr className="top-row">
                 <Cell   className="top-cell"
                         id="deck-cell"
