@@ -10,9 +10,6 @@ import Rules from './Rules'
 
 function Game() {
     //STILL NEED THE FOLLOWING:
-
-        // STACKING IN PILE VS COLUMN
-            // PILE: SAME SUIT AND ASCENDING, COLUMN: SAME SUIT AND DESCENDING
         // CALCULATE SCORE
             // STATE OF SCORE IN Game.js
             // PASS SCORE AS A PROP TO SCOREBOARD
@@ -25,6 +22,7 @@ function Game() {
     //State to render leaderboard
     const [users, setUsers] = useState([])
     const [rulesPopUp, setRulesPopUp] = useState(false)
+    const [gameStarted, setGameStarted] = useState(false)
 
     //GET Request
     useEffect(() => {
@@ -42,14 +40,14 @@ function Game() {
     return (
         <div>
             <h1 className="title">SOLITAIRE</h1>
-            <RenderBoard board={board} setBoard={setBoard} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
+            {gameStarted ? <RenderBoard board={board} setBoard={setBoard} selectedCard={selectedCard} setSelectedCard={setSelectedCard} /> : null}
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>
-            <Timer />
+            <Timer startGame={gameStarted} setGameStarted={setGameStarted}/>
             <button 
             className="show"
             onClick={() => setRulesPopUp(!rulesPopUp)}>Rules</button>
-            {rulesPopUp ? <Rules  /> : null}
+            {rulesPopUp ? <Rules rulesPopUp={rulesPopUp} setRulesPopUp={setRulesPopUp} /> : null}
         </div>
     )
 }

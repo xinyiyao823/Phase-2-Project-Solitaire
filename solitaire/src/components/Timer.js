@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Timer = () => {
+const Timer = ({startGame, setGameStarted}) => {
     const [second, setSecond] = useState('00');
     const [minute, setMinute] = useState('00');
     const [isActive, setIsActive] = useState(false);
@@ -30,8 +30,15 @@ const Timer = () => {
   function stopTimer() {
     setIsActive(false);
     setCounter(0);
-    setSecond('00');
-    setMinute('00')
+    // setSecond('00');
+    // setMinute('00')
+  }
+
+
+
+  function handleClick() {
+    setIsActive(!isActive);
+    setGameStarted(true)
   }
 
   return (
@@ -42,10 +49,10 @@ const Timer = () => {
         <span className="second">{second}</span>
       </div>
       <div className="buttons">
-        <button onClick={() => setIsActive(!isActive)} className="start">
-          {isActive ? "| |": "▶"}
+        <button onClick={handleClick} className="start">
+          {isActive ? "| |": "Start Game"}
         </button>
-        <button onClick={stopTimer} className="reset">🛑</button>
+        <button onClick={stopTimer} className="reset">End Game</button>
       </div>
    </div>
   )

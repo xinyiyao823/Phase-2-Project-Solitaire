@@ -119,7 +119,7 @@ th {
 }
 
 .container {
-  width: 150px;
+  width: 300px;
   margin: 0 auto;
   display: grid;
   place-items: center;
@@ -127,7 +127,7 @@ th {
   background-color: rgb(62, 103, 236);
   position: fixed;
   top: 740px;
-  right: 700px;
+  right: 650px;
   padding: 0.75rem 3rem;
   border-radius: 10px;
 }
@@ -167,7 +167,7 @@ th {
 .rulesBox {
   position: fixed;
   left: 30px;
-  top: 100px;
+  top: 200px;
   width: 20%;
   padding-right: 8px;
   background-color: honeydew;
@@ -175,12 +175,38 @@ th {
   font-family: 'Paytone One', sans-serif;
 }
 
-.show {
-  float: top;
-  
-}
-
 .hideRules {
   float: right;
-  margin-top: 5px;
+  margin-top: 8px;
+  background-color: honeydew;
+}
+
+.show {
+  position: fixed;
+  margin-top: -100px;
+  margin-left: 50px;
+  padding: 0.5rem 0.8rem;
+  border: none;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 300ms ease-in-out;
+  transform: translateY(0);
+  font-family: 'Paytone One', sans-serif;
+}
+
+.enter {
+  padding: 0.5rem 0.8rem;
+  border: none;
+  margin-left: 0.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 300ms ease-in-out;
+  transform: translateY(0);
+  background-color: salmon;
+  font-weight: bold;
 }

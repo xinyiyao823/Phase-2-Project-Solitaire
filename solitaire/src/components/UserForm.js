@@ -48,7 +48,8 @@ function UserForm({addNewUser}) {
             />
             <input 
             type="submit" 
-            value="Enter"  
+            value="Enter" 
+            className="enter" 
             />
         </form>
     )
