@@ -16,7 +16,7 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, de
             const [ selectedKey, selectedIndexA, selectedIndexB ] = determineArray(selectedCard)
             const [ currentKey, currentIndexA, currentIndexB ] = determineArray(card)
     
-            if (selectedKey === currentKey && selectedIndexA == currentIndexA && selectedIndexB <= currentIndexB) {
+            if (selectedKey === currentKey && selectedIndexA === currentIndexA && selectedIndexB <= currentIndexB) {
                 setIsSelected(true)
             }
         }

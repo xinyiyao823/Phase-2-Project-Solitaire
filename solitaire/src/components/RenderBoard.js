@@ -10,7 +10,18 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
     const columns = [1, 2, 3, 4, 5, 6, 7]
 
     // handle logic for determining if a card should move to a new array
-    const canMoveCard = (card) => selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal -1
+    // adjust to create stack from Ace in ascending order, same suit
+    function canMoveCard(card) {
+        if (card.suit !== selectedCard.suit) {
+            console.log('same suit')
+            return selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal - 1
+        } else if (card.suit === selectedCard.suit) {
+            return selectedCard.color === card.color && selectedCard.faceVal === card.faceVal + 1
+        }
+        
+    } 
+
+    
 
     // handle moving card from one array to another
     const moveCard = (sourceCard, destination) => {

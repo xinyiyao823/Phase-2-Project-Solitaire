@@ -3,7 +3,7 @@
 
 .leaderboard {
   position: fixed;
-  right: 50px;
+  right: 30px;
   top: 30px;
   background-color: honeydew;
   text-align: center;
@@ -12,7 +12,7 @@
 
 .userForm {
   position: fixed;
-  right: 50px;
+  right: 30px;
   top: 850px;
   background-color: honeydew;
   padding: 5px;
@@ -37,7 +37,7 @@ td {
   width: 64px;
 }
 
-td.top-row div.{
+td.top-row div {
   height: 88px;
   width: 64px;
   background-color: rgb(0, 53, 0);
@@ -51,7 +51,8 @@ td.top-row div.{
 }
 
 #board {
-  margin-left: 100px;
+  margin-left: 520px;
+
 }
 
 #board, td {
