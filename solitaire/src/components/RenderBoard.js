@@ -116,6 +116,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         setBoard={setBoard} 
                         moveCard={moveCard}
                         canMoveCard={canMoveCard}
+                        determineArray={determineArray}
                         mode="card"
                         card={chooseCard(row,col)}
                         selectedCard={selectedCard}

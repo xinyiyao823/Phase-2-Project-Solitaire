@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, selectedCard, setSelectedCard }) {
+function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, determineArray, selectedCard, setSelectedCard }) {
 
     // console.log("ROWandCOL@_startof_Card: ", row, col)
     const cardObj = { ...card, row:row, col:col }
@@ -12,6 +12,16 @@ function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, selected
     // update state of isSelected whenever selectedCard variable is changed
     useEffect( () => {
         setIsSelected(card.value === selectedCard.value)
+        const [ selectedKey, selectedIndexA, selectedIndexB ] = determineArray(selectedCard)
+        const [ currentKey, currentIndexA, currentIndexB ] = determineArray(card)
+
+        if (selectedKey === currentKey && selectedIndexA == currentIndexA && selectedIndexB < currentIndexB) {
+            setIsSelected(true)
+        } else {
+            console.log("not selected")
+        }
+
+
         console.log("NEW SELECTED CARD@Card: ", selectedCard)
     }, [selectedCard])
 

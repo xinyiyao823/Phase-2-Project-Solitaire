@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Card from './Card'
 
-function Cell({row, col, className, board, setBoard, moveCard, canMoveCard, card, selectedCard, setSelectedCard}) {
+function Cell({row, col, className, board, setBoard, moveCard, canMoveCard, determineArray, card, selectedCard, setSelectedCard}) {
 
     // console.log("CARD@Cell: ", card)
 
@@ -20,6 +20,7 @@ function Cell({row, col, className, board, setBoard, moveCard, canMoveCard, card
                     setBoard={setBoard}
                     moveCard={moveCard}
                     canMoveCard={canMoveCard}
+                    determineArray={determineArray}
                     selectedCard={selectedCard}
                     setSelectedCard={setSelectedCard}/>
             : ""}</td>
