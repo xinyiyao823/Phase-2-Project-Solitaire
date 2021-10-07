@@ -9,16 +9,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
     const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     const columns = [1, 2, 3, 4, 5, 6, 7]
 
-    // handle logic for determining if a card should move to a new array
-    function canMoveCard(card) {
-        if (card.suit !== selectedCard.suit) {
-            console.log('same suit')
-            return selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal - 1
-        } else if (card.suit === selectedCard.suit) {
-            return selectedCard.color === card.color && selectedCard.faceVal === card.faceVal + 1
-        }
-    } 
-
     // handle moving card from one array to another
     const moveCard = (sourceCard, destination) => {
 
@@ -70,16 +60,12 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         // console.log("INDEXA: ", indexA)
                         // console.log("INDEXB: ", indexB)
                         // console.log("ARRAYINDEXA: ", array[indexA])
-
                         // const indexB = array[indexA].findIndex( card => card.value === checkCard.value)
                         // console.log("INDEXB: ", indexB)
 
-                        returnVal = [ key, indexA, indexB ]
-
-                        
+                        returnVal = [ key, indexA, indexB ]            
                     } 
                 } 
-
             })
         } )
 
@@ -119,7 +105,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={false}/>
@@ -133,7 +118,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={false}/>
@@ -148,7 +132,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={true}/>
@@ -162,7 +145,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={true}/>    
@@ -176,7 +158,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={true}/>    
@@ -190,7 +171,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
-                        canMoveCard={canMoveCard}
                         moveCard={moveCard}
                         determineArray={determineArray}
                         canAccept={true}/>                  
@@ -205,7 +185,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         setBoard={setBoard}
                         canAccept={row===1}
                         moveCard={moveCard}
-                        canMoveCard={canMoveCard}
                         canAccept={true}
                         determineArray={determineArray}
                         mode="card"

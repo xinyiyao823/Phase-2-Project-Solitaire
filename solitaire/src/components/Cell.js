@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Card from './Card'
 
-function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, moveCard, canMoveCard, determineArray, selectedCard, setSelectedCard}) {
+function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, moveCard, determineArray, selectedCard, setSelectedCard}) {
 
     // console.log("CARD@Cell: ", card)
 
@@ -46,6 +46,15 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
     }
 
 
+    // handle logic for determining if a card should move to a new array
+    function canMoveCard(card) {
+        if (mode==="card") {
+            console.log('same suit')
+            return selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal - 1
+        } else if (mode==="pile") {
+            return selectedCard.color === card.color && selectedCard.faceVal === card.faceVal + 1
+        }
+    } 
 
     const clickHandler = () => {
         console.log("clicked")
