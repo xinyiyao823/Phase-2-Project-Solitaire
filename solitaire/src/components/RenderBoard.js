@@ -14,19 +14,23 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
 
     // handle moving card from one array to another
     const moveCard = (sourceCard, destination) => {
+
+        const boardCopy = { ...board }
         const [ sourceKey, sourceIndexA, sourceIndexB ] = determineArray(sourceCard)
 
         if (destination.value) {
             // destination is a card
             const [ sinkKey, sinkIndexA, sinkIndexB ] = determineArray(destination)
-            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
-            toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
+            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
+            toMove.forEach( card =>  boardCopy[sinkKey][sinkIndexA].push(card))
+            setBoard(boardCopy)
         } else {
             // destionation is a cell
             const { sinkKey, sinkIndexA } = destination
             console.log("sinkKey: ", sinkKey, " sinkIndexA: ", sinkIndexA)
-            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
-            toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
+            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
+            toMove.forEach( card =>  boardCopy[sinkKey][sinkIndexA].push(card))
+            setBoard(boardCopy)
         }
 
 
