@@ -24,6 +24,7 @@ function Game() {
     const [ selectedCard, setSelectedCard ] = useState([{}])
     //State to render leaderboard
     const [users, setUsers] = useState([])
+    const [rulesPopUp, setRulesPopUp] = useState(false)
 
     //GET Request
     useEffect(() => {
@@ -45,8 +46,13 @@ function Game() {
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>
             <Timer />
-            <button className="rules">Rules</button>
-            {/* <Rules /> */}
+            {rulesPopUp ?
+            <button 
+            className="close"
+            onClick={() => setRulesPopUp(!rulesPopUp)}>Close</button> : <button 
+            className="show"
+            onClick={() => setRulesPopUp(!rulesPopUp)}>Rules</button>}
+            {rulesPopUp ? <Rules /> : null}
         </div>
     )
 }

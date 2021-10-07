@@ -164,4 +164,18 @@ th {
   background-color: salmon;
 }
 
+.rulesBox {
+  position: fixed;
+  left: 30px;
+  top: 100px;
+  width: 20%;
+  padding-right: 8px;
+  background-color: honeydew;
+  text-align: center;
+  font-family: 'Paytone One', sans-serif;
+}
 
+.show .close {
+  width: 200px;
+  
+}

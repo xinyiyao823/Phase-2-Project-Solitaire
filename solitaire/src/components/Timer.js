@@ -43,9 +43,9 @@ const Timer = () => {
       </div>
       <div className="buttons">
         <button onClick={() => setIsActive(!isActive)} className="start">
-          {isActive ? "PAUSE": "PLAY"}
+          {isActive ? "| |": "▶"}
         </button>
-        <button onClick={stopTimer} className="reset">STOP</button>
+        <button onClick={stopTimer} className="reset">🛑</button>
       </div>
    </div>
   )
