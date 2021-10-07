@@ -109,6 +109,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={0}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
@@ -120,6 +121,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={0}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
@@ -132,6 +134,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={0}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
@@ -143,6 +146,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={1}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
@@ -154,6 +158,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={2}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
@@ -165,6 +170,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         arrIndex={3}
                         board={board}
                         selectedCard={selectedCard}
+                        setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
