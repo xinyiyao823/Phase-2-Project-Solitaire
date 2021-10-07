@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, determineArray, selectedCard, setSelectedCard }) {
+function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, determineArray, selectedCard, setSelectedCard }) {
 
     // console.log("ROWandCOL@_startof_Card: ", row, col)
     const cardObj = { ...card, row:row, col:col }
@@ -12,17 +12,15 @@ function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, determin
     // update state of isSelected whenever selectedCard variable is changed
     useEffect( () => {
         setIsSelected(card.value === selectedCard.value)
-        const [ selectedKey, selectedIndexA, selectedIndexB ] = determineArray(selectedCard)
-        const [ currentKey, currentIndexA, currentIndexB ] = determineArray(card)
-
-        if (selectedKey === currentKey && selectedIndexA == currentIndexA && selectedIndexB <= currentIndexB) {
-            setIsSelected(true)
-        } else {
-            console.log("not selected")
+        if (mode==="card") {
+            const [ selectedKey, selectedIndexA, selectedIndexB ] = determineArray(selectedCard)
+            const [ currentKey, currentIndexA, currentIndexB ] = determineArray(card)
+    
+            if (selectedKey === currentKey && selectedIndexA == currentIndexA && selectedIndexB <= currentIndexB) {
+                setIsSelected(true)
+            }
         }
-
-
-        console.log("NEW SELECTED CARD@Card: ", selectedCard)
+        // console.log("NEW SELECTED CARD@Card: ", selectedCard)
     }, [selectedCard])
 
     // stylization logic
@@ -34,7 +32,7 @@ function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, determin
 
     // handle click event
     const clickHandler = (e) => {
-        console.log("clicked ", card.value)
+        // console.log("clicked card ", card.value)
 
         if (card.show) {
             if (isSelected) {
@@ -42,7 +40,7 @@ function Card({ card, row, col, board, setBoard, moveCard, canMoveCard, determin
             } else if (!selectedCard.value) {
                 setSelectedCard(card)
             } else if (canMoveCard(card)) {
-                console.log("move would happen now")
+                // console.log("move would happen now")
                 moveCard(selectedCard, card)
             } else {
                 setSelectedCard([{}])

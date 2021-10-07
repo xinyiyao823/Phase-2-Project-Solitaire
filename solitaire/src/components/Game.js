@@ -17,6 +17,7 @@ function Game() {
             // CELL IN ACE-PILE = CARD MUST BE ACE
         // DRAW 3 CARDS
             // STRETCH GOAL: SEE ALL 3 CARDS
+                // moveCard(deck, draw) x3
         // PREVENT MOVING CARDS BACK TO DRAW AND DECK
             // CONDITIONAL IN canMove() - PREVENT DESTINATION FROM BEING DRAW
         // STACKING IN PILE VS COLUMN

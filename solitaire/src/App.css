@@ -3,19 +3,17 @@
 
 .leaderboard {
   position: fixed;
-  right: 30px;
-  top: 30px; 
+  right: 50px;
+  top: 30px;
   background-color: honeydew;
   text-align: center;
   font-family: 'Paytone One', sans-serif;
-  
 }
 
 .userForm {
   position: fixed;
-  width: 275px;
-  right: 30px;
-  top: 820px;
+  right: 50px;
+  top: 850px;
   background-color: honeydew;
   padding: 5px;
   border-collapse: separate;
@@ -30,22 +28,47 @@ body {
   background-color: rgb(2, 87, 2);
 }
 
+.top-row {
+  height: 180px;
+}
+
 td {
-  height: 24px;
-  width: 84px;
+  height: 14px;
+  width: 64px;
+}
+
+td.top-row div.{
+  height: 88px;
+  width: 64px;
+  background-color: rgb(0, 53, 0);
+}
+
+.empty-pile {
+  height: 88px;
+  width: 64px;
+  background-color: rgb(0, 53, 0);
+
 }
 
 #board {
   margin-left: 100px;
 }
 
-.grid-row .card {
-  height: 80px;
-  width: 50px;
+#board, td {
+  border: 10px solid rgb(2, 87, 2);
+}
+
+.card {
+  height: 88px;
+  width: 64px;
   background-color: white;
   border: midnightblue 1px solid;
   text-align: center;
-  position:fixed
+  /* margin: 0px auto 0px auto; */
+}
+
+.card, .empty-pile {
+  position:fixed;
 }
 
 .card.red {
@@ -84,7 +107,7 @@ thead {
 }
 
 th {
-  border: 1px solid black;
+  background-color: salmon;
 }
 
 .title {
@@ -138,18 +161,6 @@ th {
 
 .reset {
   background-color: salmon;
-}
-
-.rules {
-  padding: 0.5rem 0.8rem;
-  border: none;
-  margin-left: 0.2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: all 300ms ease-in-out;
-  transform: translateY(0);
 }
 
 

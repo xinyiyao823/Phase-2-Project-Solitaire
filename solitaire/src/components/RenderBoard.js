@@ -4,26 +4,34 @@ import Cell from './Cell'
 
 function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
 
+    console.log("BOARD@_startof_RENDERBOARD: ", board)
+
     const rows = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     const columns = [1, 2, 3, 4, 5, 6, 7]
-
-    const boardCopy = { ...board }
-    console.log("BOARDCOPY@_startof_RenderBoard: ", boardCopy)
-
-    const chooseCard = (row, col) => 
-        boardCopy.columns[col-1].length>=row ? boardCopy.columns[col-1][row-1] : console.log("....")
 
     // handle logic for determining if a card should move to a new array
     const canMoveCard = (card) => selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal -1
 
     // handle moving card from one array to another
-    const moveCard = (sourceCard, destinationCard) => {
+    const moveCard = (sourceCard, destination) => {
         const [ sourceKey, sourceIndexA, sourceIndexB ] = determineArray(sourceCard)
-        const [ sinkKey, sinkIndexA, sinkIndexB ] = determineArray(destinationCard)
 
-        const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
+        if (destination.value) {
+            // destination is a card
+            const [ sinkKey, sinkIndexA, sinkIndexB ] = determineArray(destination)
+            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
+            toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
+        } else {
+            // destionation is a cell
+            const { sinkKey, sinkIndexA } = destination
+            console.log("sinkKey: ", sinkKey, " sinkIndexA: ", sinkIndexA)
+            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
+            toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
+        }
 
-        toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
+
+
+
 
 
         // console.log("to MOVE: ", toMove)
@@ -42,13 +50,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
             board[key].forEach( (array, i) => {
                 if (array[0]) {
                     if (array.some( card => card.value === checkCard.value)) {
-                        console.log("found matching key: ", key)
+                        // console.log("found matching key: ", key)
                         const indexA = i
                         const indexB = array.findIndex( card => card.value === checkCard.value)
-                        console.log("ARRAY: ", array)
-                        console.log("INDEXA: ", indexA)
-                        console.log("INDEXB: ", indexB)
-                        console.log("ARRAYINDEXA: ", array[indexA])
+                        // console.log("ARRAY: ", array)
+                        // console.log("INDEXA: ", indexA)
+                        // console.log("INDEXB: ", indexB)
+                        // console.log("ARRAYINDEXA: ", array[indexA])
 
                         // const indexB = array[indexA].findIndex( card => card.value === checkCard.value)
                         // console.log("INDEXB: ", indexB)
@@ -56,12 +64,8 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         returnVal = [ key, indexA, indexB ]
 
                         
-                    } else {
-                        console.log("not a match")
-                    }
-                } else {
-                    console.log("false")
-                }
+                    } 
+                } 
 
             })
         } )
@@ -83,9 +87,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
     })
     }
 
-
-
-
     return (
         <table id="board">
             {/* <tr className="top-row">
@@ -101,10 +102,73 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
             </tr> */}
 
             <tr className="top-row">
-                <Cell   className="cell top-row"
+                <Cell   className="top-cell"
                         id="deck-cell"
+                        row={0}
+                        col={1}
+                        arrIndex={0}
                         board={board}
-                        mode="pile" />
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={false}/>
+                <Cell   className="top-cell"
+                        id="draw-cell"
+                        row={0}
+                        col={2}
+                        arrIndex={0}
+                        board={board}
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={false}/>
+                <td className="empty top-cell"></td>
+                <Cell   className="ace-cell top-cell"
+                        id="ace1"
+                        row={0}
+                        col={4}
+                        arrIndex={0}
+                        board={board}
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={true}/>
+                <Cell   className="ace-cell top-cell"
+                        id="ace2"
+                        row={0}
+                        col={5}
+                        arrIndex={1}
+                        board={board}
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={true}/>    
+                <Cell   className="ace-cell top-cell"
+                        id="ace3"
+                        row={0}
+                        col={6}
+                        arrIndex={2}
+                        board={board}
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={true}/>    
+                <Cell   className="ace-cell top-cell"
+                        id="ace4"
+                        row={0}
+                        col={7}
+                        arrIndex={3}
+                        board={board}
+                        selectedCard={selectedCard}
+                        mode="pile"
+                        canMoveCard={canMoveCard}
+                        moveCard={moveCard}
+                        canAccept={true}/>                  
             </tr>
 
             {rows.map(row => 
@@ -113,12 +177,12 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         row={row}
                         col={col}
                         board={board}
-                        setBoard={setBoard} 
+                        setBoard={setBoard}
+                        canAccept={row===1}
                         moveCard={moveCard}
                         canMoveCard={canMoveCard}
                         determineArray={determineArray}
                         mode="card"
-                        card={chooseCard(row,col)}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}/>)}
             </tr>)}
