@@ -5,7 +5,7 @@ import initializeBoard from '../hooks/initializeBoard'
 import UserForm from './UserForm'
 import RenderBoard from './RenderBoard'
 import RenderLeaderboard from './RenderLeaderboard'
-// import Rules from './Rules'
+import Rules from './Rules'
 
 
 function Game() {
@@ -35,6 +35,8 @@ function Game() {
             <RenderLeaderboard users={users}/>
             <UserForm addNewUser={addNewUser}/>
             <Timer />
+            <button className="rules">Rules</button>
+            {/* <Rules /> */}
         </div>
     )
 }
