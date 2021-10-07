@@ -21,7 +21,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
         const [ sourceKey, sourceIndexA, sourceIndexB ] = determineArray(sourceCard)
         const [ sinkKey, sinkIndexA, sinkIndexB ] = determineArray(destinationCard)
 
-        const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey].length-sourceIndexB)
+        const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, board[sourceKey][sourceIndexA].length-sourceIndexB)
 
         toMove.forEach( card =>  board[sinkKey][sinkIndexA].push(card))
 
