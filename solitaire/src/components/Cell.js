@@ -11,6 +11,10 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
     // const boardCopy = { ...board }
     // console.log("BOARDCOPY@_startof_Cell: ", boardCopy)
 
+    const columnKeyMapping = {
+        1:["deck", 0], 2:["draw", 0], 4:["aces", 0], 5:["aces", 1], 6:["aces", 2], 7:["aces", 3]
+    }
+
     const chooseCard = () => {
         // console.log("MODE: ", mode)
         if (mode==="card") {
@@ -18,10 +22,6 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
             return board.columns[col-1].length>=row ? board.columns[col-1][row-1] : false
         } else if (mode==="pile") {
             console.log("mode is pile")
-           
-            const columnKeyMapping = {
-                1:["deck", 0], 2:["draw", 0], 4:["aces", 0], 5:["aces", 1], 6:["aces", 2], 7:["aces", 3]
-            }
 
             const key = columnKeyMapping[col][0]
             const lengthOfPile = board[key][arrIndex].length
@@ -52,7 +52,17 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
 
         console.log(selectedCard)
 
-        if (selectedCard.value) {
+        if (row === 0 && col === 1) {
+            const boardCopy = { ...board }
+            boardCopy.draw[0].forEach(
+                card => {
+                    boardCopy.deck[0].unshift({ ...card, show:false})
+                }
+            )
+            boardCopy.draw[0] = []
+            setBoard(boardCopy)
+
+        } else if (selectedCard.value) {
             if (selectedCard.face === requires) {
                 console.log("requirement (", requires, " met")
                 const destionationObj = {
@@ -61,6 +71,7 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
                 }
                 console.log("DESTINATION OBJ: ", destionationObj)
                 moveCard(selectedCard, destionationObj)
+                setSelectedCard([{}])
             }else {
                 setSelectedCard([{}])
             }
@@ -70,7 +81,7 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
     // console.log("CARD? ", card)
 
     function addClickHandler () {
-        if (!card && canAccept) {
+        if (!card) {
             return clickHandler
         } else {
             return ""
@@ -108,6 +119,7 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
                     setBoard={setBoard}
                     moveCard={moveCard}
                     canMoveCard={canMoveCard}
+                    canAccept={canAccept}
                     determineArray={determineArray}
                     selectedCard={selectedCard}
                     setSelectedCard={setSelectedCard}/>

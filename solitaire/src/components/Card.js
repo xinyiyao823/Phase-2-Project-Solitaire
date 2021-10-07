@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, determineArray, selectedCard, setSelectedCard }) {
+function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, canAccept, determineArray, selectedCard, setSelectedCard }) {
 
     // console.log("ROWandCOL@_startof_Card: ", row, col)
     const cardObj = { ...card, row:row, col:col }
@@ -34,17 +34,43 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, de
     const clickHandler = (e) => {
         // console.log("clicked card ", card.value)
 
+        console.log(card)
+
+        const [ key, indexA, indexB ] = determineArray(card)
+        const boardCopy = { ...board }
+
         if (card.show) {
             if (isSelected) {
                 setSelectedCard([{}])
             } else if (!selectedCard.value) {
                 setSelectedCard(card)
-            } else if (canMoveCard(card)) {
+            } else if (canMoveCard(card) && canAccept) {
                 // console.log("move would happen now")
                 moveCard(selectedCard, card)
+                setSelectedCard([{}])
             } else {
                 setSelectedCard([{}])
             }
+        } else if (key === "deck") {
+            console.log("clicked deck")
+
+            const arrayLength = boardCopy.deck[0].length
+            console.log("DECK ARRAY LENGTH: ", arrayLength)
+
+            if (arrayLength === 0) {
+                console.log("empty deck")
+
+            } else if ( arrayLength >= 3) {
+                const toMove = boardCopy.deck[0].splice(boardCopy.deck[0].length - 4, 3)
+                toMove.map( card => card.show = true )
+                toMove.forEach( card => boardCopy.draw[0].push(card) )
+            } else {
+                const toMove = boardCopy.deck[0].splice(0, arrayLength)
+                toMove.map( card => card.show = true )
+                toMove.forEach( card => boardCopy.draw[0].push(card) )
+            }   
+        
+            setBoard(boardCopy)
         } else {
             setSelectedCard([{}])
         }

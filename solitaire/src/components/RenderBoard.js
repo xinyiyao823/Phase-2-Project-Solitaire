@@ -10,7 +10,6 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
     const columns = [1, 2, 3, 4, 5, 6, 7]
 
     // handle logic for determining if a card should move to a new array
-    // adjust to create stack from Ace in ascending order, same suit
     function canMoveCard(card) {
         if (card.suit !== selectedCard.suit) {
             console.log('same suit')
@@ -18,10 +17,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
         } else if (card.suit === selectedCard.suit) {
             return selectedCard.color === card.color && selectedCard.faceVal === card.faceVal + 1
         }
-        
     } 
-
-    
 
     // handle moving card from one array to another
     const moveCard = (sourceCard, destination) => {
@@ -32,15 +28,17 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
         if (destination.value) {
             // destination is a card
             const [ sinkKey, sinkIndexA, sinkIndexB ] = determineArray(destination)
-            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
+            const toMove = boardCopy[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
             toMove.forEach( card =>  boardCopy[sinkKey][sinkIndexA].push(card))
+            console.log("about to set board")
             setBoard(boardCopy)
         } else {
             // destionation is a cell
             const { sinkKey, sinkIndexA } = destination
             console.log("sinkKey: ", sinkKey, " sinkIndexA: ", sinkIndexA)
-            const toMove = board[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
+            const toMove = boardCopy[sourceKey][sourceIndexA].splice(sourceIndexB, boardCopy[sourceKey][sourceIndexA].length-sourceIndexB)
             toMove.forEach( card =>  boardCopy[sinkKey][sinkIndexA].push(card))
+            console.log("about to set board")
             setBoard(boardCopy)
         }
 
@@ -102,6 +100,12 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
     })
     }
 
+    // const topRowCells = [
+    //     { id:"deck-cell", arrIndex:0, mode:"pile", canAccept:false } }
+    // ]
+
+    console.log("BOARD OBJECT BEFORE RETURN on RenderBoard: ", board)
+
     return (
         <table id="board">
             <tr className="top-row">
@@ -111,11 +115,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={1}
                         arrIndex={0}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={false}/>
                 <Cell   className="top-cell"
                         id="draw-cell"
@@ -123,11 +129,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={2}
                         arrIndex={0}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={false}/>
                 <td className="empty top-cell"></td>
                 <Cell   className="ace-cell top-cell"
@@ -136,11 +144,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={4}
                         arrIndex={0}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={true}/>
                 <Cell   className="ace-cell top-cell"
                         id="ace2"
@@ -148,11 +158,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={5}
                         arrIndex={1}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={true}/>    
                 <Cell   className="ace-cell top-cell"
                         id="ace3"
@@ -160,11 +172,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={6}
                         arrIndex={2}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={true}/>    
                 <Cell   className="ace-cell top-cell"
                         id="ace4"
@@ -172,11 +186,13 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         col={7}
                         arrIndex={3}
                         board={board}
+                        setBoard={setBoard}
                         selectedCard={selectedCard}
                         setSelectedCard={setSelectedCard}
                         mode="pile"
                         canMoveCard={canMoveCard}
                         moveCard={moveCard}
+                        determineArray={determineArray}
                         canAccept={true}/>                  
             </tr>
 
@@ -190,6 +206,7 @@ function RenderBoard({ board, setBoard, selectedCard, setSelectedCard }) {
                         canAccept={row===1}
                         moveCard={moveCard}
                         canMoveCard={canMoveCard}
+                        canAccept={true}
                         determineArray={determineArray}
                         mode="card"
                         selectedCard={selectedCard}

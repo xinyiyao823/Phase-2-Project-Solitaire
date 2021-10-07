@@ -10,6 +10,11 @@ import Rules from './Rules'
 
 function Game() {
     //STILL NEED THE FOLLOWING:
+        // RENDER TOP ROW
+            // DECK DRAW N/A A1 A2 A3 A4
+        // MOVE CARD TO EMPTY CELL
+            // CELL IN COMULNS = CARD MUST BE KING
+            // CELL IN ACE-PILE = CARD MUST BE ACE
         // DRAW 3 CARDS
             // STRETCH GOAL: SEE ALL 3 CARDS
                 // moveCard(deck, draw) x3
