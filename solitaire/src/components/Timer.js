@@ -37,8 +37,11 @@ const Timer = ({setSubmitted, isActive, setIsActive, gameStarted, setGameStarted
 
 
 
-  function handleClick() {
-    setCounter(0)
+  function handleClick(string) {
+    if (string === "start")
+      {
+        setCounter(0)
+      }
     setIsActive(!isActive);
     setGameStarted(true)
   }
@@ -64,10 +67,10 @@ const Timer = ({setSubmitted, isActive, setIsActive, gameStarted, setGameStarted
         <span className="second">{second}</span>
       </div>
       <div className="buttons">
-        {gameStarted? wasStopped? null : <button onClick={handleClick} className="time-button start">
+        {gameStarted? wasStopped? null : <button onClick={() => handleClick("resume")} className="time-button start">
           {isActive ? "| |": "RESUME"}
         </button>       
-        : <button onClick={handleClick} className="time-button start">
+        : <button onClick={() => handleClick("start")} className="time-button start">
           {isActive ? "| |": "START"}
         </button>}
         {gameStarted? wasStopped? 
