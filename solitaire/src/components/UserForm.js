@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-function UserForm({addNewUser, score }) {
-    const [ submitted, setSubmitted ] = useState(false)
+function UserForm({submitted, setSubmitted, addNewUser, score }) {
+
     const [userData, setUserData] = useState({
         username: '',
     })
@@ -28,7 +28,6 @@ function UserForm({addNewUser, score }) {
             .then(r => r.json())
             .then(newUserName => addNewUser(newUserName))
         }
-
         
          setUserData('')
          setSubmitted(true)

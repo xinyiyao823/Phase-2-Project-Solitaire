@@ -1,8 +1,9 @@
 import React from 'react'
 
-function YouWin({ setWasStopped}) {
+function YouWin({ setWasStopped, isActive, setIsActive }) {
 
     setWasStopped(true)
+    setIsActive(false)
 
     return (
         <div id="you-win">

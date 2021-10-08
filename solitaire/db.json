@@ -60,9 +60,15 @@
       "score": "99",
       "id": 13
     },
-    { "username": "RickRoll",
+    {
+      "username": "RickRoll",
       "score": 22,
-      "id": 14}
-
+      "id": 14
+    },
+    {
+      "username": "jimhalpert33",
+      "score": 3,
+      "id": 15
+    }
   ]
 }

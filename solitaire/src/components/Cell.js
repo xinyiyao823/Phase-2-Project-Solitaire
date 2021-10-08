@@ -112,8 +112,6 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
 
     const onClick = addClickHandler()
 
-
-
     return (
         <td className={className}
             onClick={onClick}

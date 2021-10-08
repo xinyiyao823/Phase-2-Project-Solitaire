@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import initializeBoard from '../hooks/initializeBoard';
 
 
-const Timer = ({gameStarted, setGameStarted, setSelectedCard, setBoard, setScore, wasStopped, setWasStopped}) => {
+const Timer = ({setSubmitted, isActive, setIsActive, gameStarted, setGameStarted, setSelectedCard, setBoard, setScore, wasStopped, setWasStopped}) => {
     const [second, setSecond] = useState('00');
     const [minute, setMinute] = useState('00');
-    const [isActive, setIsActive] = useState(false);
     const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -54,6 +53,7 @@ const Timer = ({gameStarted, setGameStarted, setSelectedCard, setBoard, setScore
     setIsActive(false)
     setCounter(0)
     setGameStarted(false)
+    setSubmitted(false)
   }
 
   return (
