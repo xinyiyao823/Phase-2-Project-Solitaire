@@ -16,6 +16,7 @@ function UserForm({submitted, setSubmitted, addNewUser, score }) {
     function handleSubmit(e) {
         e.preventDefault();
         const data = { ...userData, score: score }
+        
         //POST Request
         if (data.username !== '' && data.score !== 0 && !submitted) {
             fetch('http://localhost:3001/users', {

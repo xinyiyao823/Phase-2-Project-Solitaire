@@ -4,19 +4,16 @@ import Card from './Card'
 
 function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, moveCard, determineArray, selectedCard, setSelectedCard}) {
 
-    // console.log("CARD@Cell: ", card)
-
-    // console.log("ROWandCOL@_startof_Cell: ", row, col)
-
-    // const boardCopy = { ...board }
-    // console.log("BOARDCOPY@_startof_Cell: ", boardCopy)
+                // console.log("CARD@Cell: ", card)
+                // console.log("ROWandCOL@_startof_Cell: ", row, col)
+                // console.log("BOARDCOPY@_startof_Cell: ", boardCopy)
 
     const columnKeyMapping = {
         1:["deck", 0], 2:["draw", 0], 4:["aces", 0], 5:["aces", 1], 6:["aces", 2], 7:["aces", 3]
     }
 
     const chooseCard = () => {
-        // console.log("MODE: ", mode)
+                    // console.log("MODE: ", mode)
         if (mode==="card") {
             // console.log("mode is card")
             return board.columns[col-1].length>=row ? board.columns[col-1][row-1] : false
@@ -30,21 +27,12 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
                 const cardInPile = board[key][arrIndex][lengthOfPile - 1]
                 console.log("CARD IN PILE: ", cardInPile)
 
-            //     console.log("KEY: ", key, " ARRINDEX: ", arrIndex)
+                        // console.log("KEY: ", key, " ARRINDEX: ", arrIndex)
 
                 return cardInPile
             }
-
-            
-
-
-            
-            // return board[key][arrIndex].length > 0? board[key][arrIndex][board[key][arrIndex].length - 1] : false
-
-
         }
     }
-
 
     // handle logic for determining if a card should move to a new array
     function canMoveCard(card) {
@@ -87,7 +75,7 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
         } 
     }
 
-    // console.log("CARD? ", card)
+                // console.log("CARD? ", card)
 
     function addClickHandler () {
         if (!card) {
@@ -106,11 +94,10 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
     }
 
     const requires =  canAccept? makeRequirement() : false
-    
     const card = chooseCard()
-    // console.log("CARD@_endof_Cell.js: ", card)
-
     const onClick = addClickHandler()
+                
+                // console.log("CARD@_endof_Cell.js: ", card)
 
     return (
         <td className={className}

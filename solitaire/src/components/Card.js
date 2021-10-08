@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 
 function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, canAccept, determineArray, selectedCard, setSelectedCard }) {
 
-    // console.log("ROWandCOL@_startof_Card: ", row, col)
+                // console.log("ROWandCOL@_startof_Card: ", row, col)
     const cardObj = { ...card, row:row, col:col }
-    // console.log("CARDObj@_startof_Card", cardObj)
+                // console.log("CARDObj@_startof_Card", cardObj)
 
     const [ isSelected, setIsSelected ] = useState(false)
 
@@ -20,7 +20,7 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, ca
                 setIsSelected(true)
             }
         }
-        // console.log("NEW SELECTED CARD@Card: ", selectedCard)
+                    // console.log("NEW SELECTED CARD@Card: ", selectedCard)
     }, [selectedCard])
 
     // stylization logic
@@ -32,7 +32,7 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, ca
 
     // handle click event
     const clickHandler = (e) => {
-        // console.log("clicked card ", card.value)
+                    // console.log("clicked card ", card.value)
 
         console.log(card)
 

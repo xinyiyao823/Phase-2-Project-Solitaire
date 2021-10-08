@@ -70,7 +70,7 @@ function initializeBoard() {
             deck: [ [] ],
             draw: [ [] ],
         }
-        // console.log("DECK@populateBoard: ", deck)
+                    // console.log("DECK@populateBoard: ", deck)
 
         for (let i=0; i<=6; i++) {
             for (let n=0; n<=i; n++) {
@@ -81,17 +81,17 @@ function initializeBoard() {
         }
 
         board.deck[0] = [ ...deck ]
-        // console.log("BOARD@_endof_populateBoard: ", board)
+                    // console.log("BOARD@_endof_populateBoard: ", board)
 
         return board
     }
 
     const deck = spawnDeck()
-    // console.log("DECK@initializeBoard: ", deck)
+                // console.log("DECK@initializeBoard: ", deck)
     const shuffledDeck = shuffleArray(deck)
     const board = populateBoard(shuffledDeck)
 
-    // console.log("BOARD@_endof_initializeBoard", board)
+                // console.log("BOARD@_endof_initializeBoard", board)
 
     return board
 

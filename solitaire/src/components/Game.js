@@ -15,14 +15,13 @@ import YouWin from './YouWin'
 function Game() {
 
     const [ board, setBoard ] = useState(initializeBoard())
-    const [ selectedCard, setSelectedCard ] = useState([{}])
-    //State to render leaderboard
-    const [users, setUsers] = useState([])
-    const [rulesPopUp, setRulesPopUp] = useState(false)
-    const [ gameStarted, setGameStarted ] = useState(false)
     const [ score, setScore ] = useState(0)
+    const [ selectedCard, setSelectedCard ] = useState([{}])
+    const [ users, setUsers ] = useState([])
+    const [ rulesPopUp, setRulesPopUp] = useState(false)
+    const [ gameStarted, setGameStarted ] = useState(false)
     const [ wasStopped, setWasStopped ] = useState(false)
-    const [isActive, setIsActive] = useState(false);
+    const [ isActive, setIsActive ] = useState(false);
     const [ submitted, setSubmitted ] = useState(false)
 
     //GET Request
@@ -36,7 +35,7 @@ function Game() {
         setUsers([...users, user])
       }
 
-    // console.log("BOARD@Game: ", board)
+                // console.log("BOARD@Game: ", board)
 
     return (
         <div>
