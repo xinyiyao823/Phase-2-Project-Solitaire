@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import initializeBoard from '../hooks/initializeBoard';
 
-const Timer = ({startGame, setGameStarted}) => {
+
+const Timer = ({gameStarted, setGameStarted, setSelectedCard, setBoard, setScore, wasStopped, setWasStopped}) => {
     const [second, setSecond] = useState('00');
     const [minute, setMinute] = useState('00');
     const [isActive, setIsActive] = useState(false);
@@ -26,34 +28,51 @@ const Timer = ({startGame, setGameStarted}) => {
 
     return () => clearInterval(intervalId);
   }, [isActive, counter])
+  
 
   function stopTimer() {
     setIsActive(false);
     setCounter(0);
-    
-    // setSecond('00');
-    // setMinute('00')
+    setWasStopped(true)
   }
 
 
 
   function handleClick() {
+    setCounter(0)
     setIsActive(!isActive);
     setGameStarted(true)
   }
 
+  function resetHandler () {
+    setBoard(initializeBoard())
+    setSelectedCard([{}])
+    setScore(0)
+    setSecond('00');
+    setMinute('00')
+    setWasStopped(false)
+    setIsActive(false)
+    setCounter(0)
+    setGameStarted(false)
+  }
+
   return (
-    <div className="container">
+    <div className="timer-container">
       <div className="time">
         <span className="minute">{minute}</span>
         <span>:</span>
         <span className="second">{second}</span>
       </div>
       <div className="buttons">
-        <button onClick={handleClick} className="start">
-          {isActive ? "| |": "Start Game"}
-        </button>
-        <button onClick={stopTimer} className="reset">End Game</button>
+        {gameStarted? wasStopped? null : <button onClick={handleClick} className="time-button start">
+          {isActive ? "| |": "RESUME"}
+        </button>       
+        : <button onClick={handleClick} className="time-button start">
+          {isActive ? "| |": "START"}
+        </button>}
+        {gameStarted? wasStopped? 
+        <button onClick={resetHandler} className="time-button stop-reset">New Game</button>
+        : <button onClick={stopTimer} className="time-button stop-reset">End Game</button> : null }
       </div>
    </div>
   )

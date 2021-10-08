@@ -52,7 +52,7 @@ function Cell({row, col, arrIndex, canAccept, className, mode, board, setBoard, 
             console.log('same suit')
             return selectedCard.color !== card.color && selectedCard.faceVal === card.faceVal - 1
         } else if (mode==="pile") {
-            return selectedCard.color === card.color && selectedCard.faceVal === card.faceVal + 1
+            return selectedCard.suit === card.suit && selectedCard.faceVal === card.faceVal + 1
         }
     } 
 

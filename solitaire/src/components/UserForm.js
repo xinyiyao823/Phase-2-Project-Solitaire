@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-function UserForm({addNewUser}) {
+function UserForm({addNewUser, score }) {
+    const [ submitted, setSubmitted ] = useState(false)
     const [userData, setUserData] = useState({
         username: '',
-        score: ''
     })
 
     function handleOnChange(e) {
@@ -15,18 +15,23 @@ function UserForm({addNewUser}) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const data = { ...userData, score: score }
         //POST Request
-        fetch('http://localhost:3001/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(r => r.json())
-        .then(newUserName => addNewUser(newUserName))
+        if (data.username !== '' && data.score !== 0 && !submitted) {
+            fetch('http://localhost:3001/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(r => r.json())
+            .then(newUserName => addNewUser(newUserName))
+        }
+
         
          setUserData('')
+         setSubmitted(true)
 
     }
 
@@ -34,23 +39,23 @@ function UserForm({addNewUser}) {
         <form 
         className="userForm"
         onSubmit={handleSubmit}>
-            Please create a username:
+            <div>
+            <p>Username: </p>
             <input
             name="username"
             onChange={handleOnChange}
             value={userData.username}
-            /><br/>
-            Enter your score:
-            <input
-            name="score"
-            onChange={handleOnChange}
-            value={userData.score}
             />
+                </div>
+            <div>
+            <p>Your Score: </p><span style={{color: "orange", marginLeft: 24}}>{score}</span>
             <input 
             type="submit" 
-            value="Enter" 
-            className="enter" 
+            value="Submit"  
+            className="submit-button"
             />
+            </div>
+
         </form>
     )
 }

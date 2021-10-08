@@ -13,6 +13,9 @@ function RenderLeaderboard({users}) {
 
     const ranks = ranksArray(15)
 
+    const topTen = users.slice(0,10)
+    console.log("TOPTEN: ",topTen)
+
     return (
         <div className="leaderboard">
             <h1>Leaderboard</h1>
@@ -26,14 +29,14 @@ function RenderLeaderboard({users}) {
                 </thead>
                 <tbody>
                     {
-                        users.map((user) => (
+                       topTen.map((user) => 
                             <tr key={user}>
                                 <td className="header">{ranks.shift()}</td>
                                 <td className="header">{user.username}</td>
                                 <td className="header">{user.score} points</td>
                                 <td/>
                             </tr>
-                        ))
+                        )
                     }
                 </tbody>
             </table>
