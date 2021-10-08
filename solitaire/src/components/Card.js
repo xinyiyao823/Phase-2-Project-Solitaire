@@ -61,13 +61,13 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, ca
                 console.log("empty deck")
 
             } else if ( arrayLength >= 3) {
-                const toMove = boardCopy.deck[0].splice(boardCopy.deck[0].length - 4, 3)
+                const toMove = boardCopy.deck[0].splice(boardCopy.deck[0].length - 3, 3)
                 toMove.map( card => card.show = true )
-                toMove.forEach( card => boardCopy.draw[0].push(card) )
+                boardCopy.draw[0] = [ ...board.draw[0], ...toMove.reverse() ]
             } else {
                 const toMove = boardCopy.deck[0].splice(0, arrayLength)
                 toMove.map( card => card.show = true )
-                toMove.forEach( card => boardCopy.draw[0].push(card) )
+                boardCopy.draw[0] = [ ...board.draw[0], ...toMove.reverse() ]
             }   
         
             setBoard(boardCopy)
