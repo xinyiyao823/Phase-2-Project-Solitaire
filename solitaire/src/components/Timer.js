@@ -71,8 +71,8 @@ const Timer = ({setSubmitted, isActive, setIsActive, gameStarted, setGameStarted
           {isActive ? "| |": "START"}
         </button>}
         {gameStarted? wasStopped? 
-        <button onClick={resetHandler} className="time-button stop-reset">New Game</button>
-        : <button onClick={stopTimer} className="time-button stop-reset">End Game</button> : null }
+        <button onClick={resetHandler} className="time-button ">New Game</button>
+        : <button onClick={stopTimer} className="time-button stop stop-reset">End Game</button> : null }
       </div>
    </div>
   )

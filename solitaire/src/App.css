@@ -222,6 +222,10 @@ p#score-label  {
   margin-bottom: 6px;
 }
 
+.stop {
+  background-color:rgb(255, 105, 105);
+}
+
 .reset {
   background-color: salmon;
 }
