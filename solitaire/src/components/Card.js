@@ -45,7 +45,7 @@ function Card({ card, mode, row, col, board, setBoard, moveCard, canMoveCard, ca
             } else if (!selectedCard.value) {
                 setSelectedCard(card)
             } else if (canMoveCard(card) && canAccept) {
-                // console.log("move would happen now")
+                            // console.log("move would happen now")
                 moveCard(selectedCard, card)
                 setSelectedCard([{}])
             } else {
