@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Paytone+One&family=Rampart+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .leaderboard {
   position: fixed;
@@ -135,7 +136,8 @@ th {
 .time {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: white;
+  color: cornsilk;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .buttons button {

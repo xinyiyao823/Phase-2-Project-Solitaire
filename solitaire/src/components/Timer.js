@@ -30,6 +30,7 @@ const Timer = ({startGame, setGameStarted}) => {
   function stopTimer() {
     setIsActive(false);
     setCounter(0);
+    
     // setSecond('00');
     // setMinute('00')
   }
