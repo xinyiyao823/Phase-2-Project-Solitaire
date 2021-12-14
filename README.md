@@ -1,4 +1,4 @@
-# [Solitaire]
+# Solitaire
 
 
 ## Features
@@ -10,3 +10,5 @@
 ## Technologies
 ### Front-End
 * [React](https://reactjs.org/): Javascript Framework
+
+
