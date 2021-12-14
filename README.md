@@ -2,10 +2,10 @@
 
 
 ## Features
-* Live chat with multiple members
-* Create new conversations with members of your choice
-* Navigate between conversations
-* New messages appear in real time
+* Replica of Solitaire card game
+* Able to see game rules and play game front start to finish
+* Score calculator and timer
+* Able to enter username and end score into leaderboard
 
 ## Technologies
 ### Front-End
